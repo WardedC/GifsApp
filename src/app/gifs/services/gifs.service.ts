@@ -9,12 +9,22 @@ export class GifsService {
 
   constructor() { }
 
+
   get tagHistory(){
     return [...this._tagsHistory];
   }
+  
+  private organizeHistory(tag:string){
+    tag = tag.toLowerCase();
 
-  searchTag(tag:string): void{
+    if( this._tagsHistory= this._tagsHistory.filter((oldTag)=> oldTag !== tag) )
     this._tagsHistory.unshift(tag);
+    this._tagsHistory = this.tagHistory.splice(0,10);
+  }
+  
+  searchTag(tag:string): void{
+    if(tag.length === 0) return;
+    this.organizeHistory(tag);
   }
 
 }
