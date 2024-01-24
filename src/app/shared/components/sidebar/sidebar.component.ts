@@ -20,4 +20,13 @@ export class SidebarComponent {
     this.gifsService.searchTag(tag);
   }
 
+  deleteATag(tag: string){
+    this.gifsService.deleteSpecificTagnHistory(tag)
+
+  }
+
+  deleteHistoryTag(){
+    this.gifsService.deleteAllTagHistory()
+  }
+
  }

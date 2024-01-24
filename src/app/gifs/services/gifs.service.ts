@@ -18,6 +18,23 @@ export class GifsService {
   get tagHistory(){
     return [...this._tagsHistory];
   }
+ 
+  public deleteSpecificTagnHistory(tag: string): void{
+    this._tagsHistory = this._tagsHistory.filter(item => item !== tag)
+    localStorage.removeItem(tag);
+    this.safeLocalStorage();
+
+  }
+
+  public deleteAllTagHistory(): void{
+    this._tagsHistory = [];
+    localStorage.clear;
+    this.safeLocalStorage();
+
+
+  }
+
+
 
   private safeLocalStorage(){
     localStorage.setItem('History', JSON.stringify(this._tagsHistory))
